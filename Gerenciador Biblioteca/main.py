@@ -1,25 +1,35 @@
-from pessoas import Pessoa, Bibliotecario
+from pessoas import Leitor, Bibliotecario
 from operacoes import cadastrar_livro, listar_livros, emprestar_livro, devolver_livro
+from menu import MenuADM, MenuLeitor
 
 def main():
-    joao = Pessoa("João", "001")
-    root = Bibliotecario("root", "000")
-    
+
     biblioteca = []
-    pessoas = [joao,root]
+    pessoas = [Bibliotecario("root", "000"), Leitor("João", "001")]
+
+    menu_adm = MenuADM()
+    menu_leitor = MenuLeitor()
 
     while True:
-        print("\n1. Cadastrar livro\n2. Listar livros\n3. Emprestar\n4. Devolver\n5. Sair")
+        print("1. Acesso como Administrador\n2. Acesso como Leitor\n3. Sair")
         opcao = input("Escolha: ")
+
         if opcao == "1":
-            cadastrar_livro(biblioteca)
+            login = input("Digite o ID do administrador: ")
+            for p in pessoas:
+                if p.id == login and p.admin:
+                    menu_adm.exibir_menu(biblioteca, pessoas)
+                    break
+            else:
+                print("Acesso negado. ID inválido.")
+
+
         elif opcao == "2":
-            listar_livros(biblioteca)
+            menu_leitor.exibir_menu(biblioteca, pessoas)
+
+
+
         elif opcao == "3":
-            emprestar_livro(biblioteca, pessoas)
-        elif opcao == "4":
-            devolver_livro(biblioteca)
-        elif opcao == "5":
             break
         else:
             print("Opção inválida.")
