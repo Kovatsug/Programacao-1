@@ -107,7 +107,7 @@ class Operacoes:
 
     def cadastrar_leitor(pessoas):
         nome = input("Nome do leitor: ")
-        id = f"00{len(pessoas) + 1}"
+        id = f"00{len(pessoas)}"
         leitor = Leitor(nome, id)
         pessoas.append(leitor)
         print("Leitor cadastrado com sucesso!")
