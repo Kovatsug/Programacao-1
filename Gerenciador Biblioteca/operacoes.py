@@ -12,7 +12,7 @@ def cadastrar_livro(biblioteca):
         print(f"Erro: {e}")
 
 def listar_livros(biblioteca):
-    if not biblioteca:
+    if biblioteca == []:
         print("Nenhum livro cadastrado.")
     for livro in biblioteca:
         print(livro)
@@ -21,8 +21,14 @@ def emprestar_livro(biblioteca, pessoas):
     try:
         titulo = input("Titulo do livro: ")
         id_pessoa = input("ID da pessoa: ")
-        livro = next(l for l in biblioteca if l.titulo == titulo)
-        pessoa = next(p for p in pessoas if p.id == id_pessoa)
+        pessoa = None
+        livro = None
+        for l in biblioteca:
+            if l.titulo == titulo:
+                livro = l
+        for p in pessoas:
+            if p.id == id_pessoa:
+                pessoa = p
         livro.emprestar(pessoa)
         print("Livro emprestado com sucesso!")
     except StopIteration:

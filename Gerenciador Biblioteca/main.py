@@ -1,12 +1,12 @@
-from pessoa import Leitor, Bibliotecario
+from pessoas import Pessoa, Bibliotecario
 from operacoes import cadastrar_livro, listar_livros, emprestar_livro, devolver_livro
 
 def main():
+    joao = Pessoa("João", "001")
+    root = Bibliotecario("root", "000")
+    
     biblioteca = []
-    pessoas = [
-        Leitor("João", "001"),
-        Bibliotecario("root", "root")
-    ]
+    pessoas = [joao,root]
 
     while True:
         print("\n1. Cadastrar livro\n2. Listar livros\n3. Emprestar\n4. Devolver\n5. Sair")
