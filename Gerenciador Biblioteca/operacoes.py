@@ -9,21 +9,29 @@ class Operacoes:
         for livro in biblioteca:
             print(livro)
 
-    def L_emprestar_livro(biblioteca, leitor):
+    def L_emprestar_livro(biblioteca, pessoas, id_leitor):
         try:
             titulo = input("Titulo do livro: ")
             for l in biblioteca:
                 if l.titulo == titulo:
                     livro = l
                     break
+            for p in pessoas:
+                if p.id == id_leitor:
+                    leitor = p
+                    break
             livro.emprestar(leitor)
             print("Livro emprestado com sucesso!")
         except Exception as e:
             print(f"Erro: {e}")
     
-    def L_devolver_livro(biblioteca, leitor):
+    def L_devolver_livro(biblioteca, pessoas, id_leitor):
         try:
             titulo = input("Titulo do livro: ")
+            for p in pessoas:
+                if p.id == id_leitor:
+                    leitor = p
+                    break
             for l in leitor.livros_emprestados:
                 if l.titulo == titulo:
                     livro = l
@@ -56,10 +64,16 @@ class Operacoes:
 
     def devolver_livro(biblioteca, pessoas):
         try:
-            titulo = input("Titulo do livro: ")
-            livro = next(l for l in biblioteca if l.titulo == titulo)
             id_pessoa = input("ID da pessoa: ")
-            pessoa = next(p for p in pessoas if p.id == id_pessoa)
+            for p in pessoas:
+                if p.id == id_pessoa:
+                    pessoa = p
+                    break
+            titulo = input("Titulo do livro: ")
+            for l in pessoa.livros_emprestados:
+                if l.titulo == titulo:
+                    livro = l
+                    break
             livro.devolver()
             print("Livro devolvido com sucesso!")
         except Exception as e:

@@ -1,5 +1,5 @@
 from pessoas import Leitor, Bibliotecario
-from operacoes import cadastrar_livro, listar_livros, emprestar_livro, devolver_livro
+from operacoes import Operacoes
 from menu import MenuADM, MenuLeitor
 
 def main():
@@ -7,8 +7,6 @@ def main():
     biblioteca = []
     pessoas = [Bibliotecario("root", "000"), Leitor("João", "001")]
 
-    menu_adm = MenuADM()
-    menu_leitor = MenuLeitor()
 
     while True:
         print("1. Acesso como Administrador\n2. Acesso como Leitor\n3. Sair")
@@ -18,6 +16,7 @@ def main():
             login = input("Digite o ID do administrador: ")
             for p in pessoas:
                 if p.id == login and p.admin:
+                    menu_adm = MenuADM(p.id)
                     menu_adm.exibir_menu(biblioteca, pessoas)
                     break
             else:
@@ -25,9 +24,14 @@ def main():
 
 
         elif opcao == "2":
-            menu_leitor.exibir_menu(biblioteca, pessoas)
-
-
+            login = input("Digite o ID do leitor: ")
+            for p in pessoas:
+                if p.id == login:
+                    menu_leitor = MenuLeitor(p.id)
+                    menu_leitor.exibir_menu(biblioteca, pessoas)
+                    break
+            else:
+                print("Acesso negado. ID inválido.")
 
         elif opcao == "3":
             break

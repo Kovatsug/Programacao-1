@@ -9,8 +9,6 @@ class Livro:
     def emprestar(self, pessoa):
         if self.disponivel == False:
             raise Exception("Livro já emprestado.")
-        elif self.reservado == True:
-            raise Exception("Livro já reservado.")
         pessoa.livros_emprestados.append(self)
         self.disponivel = False
         self.emprestado_para = pessoa
