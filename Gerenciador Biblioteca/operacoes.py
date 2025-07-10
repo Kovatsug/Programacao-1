@@ -1,7 +1,7 @@
 from livro import Livro
 from pessoas import Leitor
 
-class OperacoesBiblioteca:
+class Operacoes:
     
     def listar_livros(biblioteca):
         if biblioteca == []:
@@ -9,7 +9,34 @@ class OperacoesBiblioteca:
         for livro in biblioteca:
             print(livro)
 
-    def emprestar_livro(biblioteca, pessoa):
+    def L_emprestar_livro(biblioteca, leitor):
+        try:
+            titulo = input("Titulo do livro: ")
+            for l in biblioteca:
+                if l.titulo == titulo:
+                    livro = l
+                    break
+            livro.emprestar(leitor)
+            print("Livro emprestado com sucesso!")
+        except Exception as e:
+            print(f"Erro: {e}")
+    
+    def L_devolver_livro(biblioteca, leitor):
+        try:
+            titulo = input("Titulo do livro: ")
+            for l in leitor.livros_emprestados:
+                if l.titulo == titulo:
+                    livro = l
+                    break
+            livro.devolver(leitor)
+            print("Livro devolvido com sucesso!")
+        except Exception as e:
+            print(f"Erro: {e}")
+
+
+    #------------------------------Operações Administrativas--------------------------------------
+
+    def emprestar_livro(biblioteca, pessoas):
         try:
             titulo = input("Titulo do livro: ")
             
@@ -17,45 +44,28 @@ class OperacoesBiblioteca:
             for l in biblioteca:
                 if l.titulo == titulo:
                     livro = l
-            for p in pessoa:
+                    break
+            for p in pessoas:
                 if p.id == id_pessoa:
                     pessoa = p
+                    break
             livro.emprestar(pessoa)
             print("Livro emprestado com sucesso!")
-        except StopIteration:
-            print("Livro ou pessoa não encontrados.")
         except Exception as e:
             print(f"Erro: {e}")
 
-    def devolver_livro(biblioteca):
+    def devolver_livro(biblioteca, pessoas):
         try:
             titulo = input("Titulo do livro: ")
             livro = next(l for l in biblioteca if l.titulo == titulo)
+            id_pessoa = input("ID da pessoa: ")
+            pessoa = next(p for p in pessoas if p.id == id_pessoa)
             livro.devolver()
             print("Livro devolvido com sucesso!")
-        except StopIteration:
-            print("Livro não encontrado.")
         except Exception as e:
             print(f"Erro: {e}")
 
-    def reservar_livro(biblioteca, pessoa):
-        try:
-            titulo = input("Titulo do livro: ")
-            id_pessoa = input("ID da pessoa: ")
-            for l in biblioteca:
-                if l.titulo == titulo:
-                    livro = l
-            for p in pessoa:
-                if p.id == id_pessoa:
-                    pessoa = p
-            livro.reservar(pessoa)
-            print("Livro reservado com sucesso!")
-        except StopIteration:
-            print("Livro ou pessoa não encontrados.")
-        except Exception as e:
-            print(f"Erro: {e}")
-
-    #Operações Administrativas
+     #Exclusivo Administrador
 
     def cadastrar_livro(biblioteca):
         try:

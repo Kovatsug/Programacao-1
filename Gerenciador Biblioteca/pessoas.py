@@ -10,8 +10,7 @@ class Leitor(Pessoa):
         super().__init__(nome)
         self.__id = id
         self.__admin = False
-        self.__livros_reservados = []
-        self.__livros_emprestados = []  
+        self.livros_emprestados = []  
 
     @property
     def id(self):
@@ -20,15 +19,12 @@ class Leitor(Pessoa):
     def admin(self):
         return self.__admin
 
-    @property
-    def livros_reservados(self):
-        return self.__livros_reservados
 
     def __str__(self):
-        return f"Leitor: {self.nome}, ID: {self.id}, Livros Reservados: {self.livros_reservados}, Livros Emprestados: {self.livros_emprestados}"
+        return f"Leitor: {self.nome}, ID: {self.id}, Livros Emprestados: {self.livros_emprestados}"
 
 class Bibliotecario(Pessoa):
-    def __init__(self, nome, id, senha):
+    def __init__(self, nome, id):
         super().__init__(nome)
         self.__id = id
         self.__admin = True

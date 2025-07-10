@@ -1,4 +1,4 @@
-from operacoes import cadastrar_livro, listar_livros, emprestar_livro, devolver_livro, reservar_livro, excluir_livro, cadastrar_leitor, listar_leitores
+from operacoes import Operacoes
 
 class MenuLeitor:
     def __init__(self, id_leitor):
@@ -14,13 +14,13 @@ class MenuLeitor:
             opcao = input("Escolha: ")
 
             if opcao == "1":
-                listar_livros(biblioteca)
+                Operacoes.listar_livros(biblioteca)
             elif opcao == "2":
-                emprestar_livro(biblioteca, self.id_leitor)
+                Operacoes.emprestar_livro(biblioteca, self.id_leitor)
             elif opcao == "3":
-                devolver_livro(biblioteca)
+                Operacoes.devolver_livro(biblioteca)
             elif opcao == "4":
-                reservar_livro(biblioteca, self.id_leitor)
+                Operacoes.reservar_livro(biblioteca, self.id_leitor)
             elif opcao == len(self.opcoes):
                 break
             else:
@@ -38,21 +38,21 @@ class MenuADM:
             opcao = input("Escolha: ")
 
             if opcao == "1":
-                cadastrar_livro(biblioteca)
+                Operacoes.cadastrar_livro(biblioteca)
             elif opcao == "2":
-                listar_livros(biblioteca)
+                Operacoes.listar_livros(biblioteca)
             elif opcao == "3":
-                emprestar_livro(biblioteca, pessoas)
+                Operacoes.emprestar_livro(biblioteca, pessoas)
             elif opcao == "4":
-                devolver_livro(biblioteca)
+                Operacoes.devolver_livro(biblioteca)
             elif opcao == "5":
-                reservar_livro(biblioteca, pessoas)
+                Operacoes.reservar_livro(biblioteca, pessoas)
             elif opcao == "6":
-                excluir_livro(biblioteca)
+                Operacoes.excluir_livro(biblioteca)
             elif opcao == "7":
-                cadastrar_leitor(pessoas)
+                Operacoes.cadastrar_leitor(pessoas)
             elif opcao == "8":
-                listar_leitores(pessoas)
+                Operacoes.listar_leitores(pessoas)
             elif opcao == len(self.opcoes):
                 break
             else:
