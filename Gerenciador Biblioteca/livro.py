@@ -16,7 +16,7 @@ class Livro:
     def devolver(self, pessoa):
         if self.disponivel:
             raise Exception("Livro não está emprestado.")
-        pessoa.livros_emprestados.remove(self)
+        pessoa.livros_emprestados.remove(self.titulo)
         self.disponivel = True
         self.emprestado_para = None
 
