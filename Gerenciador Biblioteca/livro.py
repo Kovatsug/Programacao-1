@@ -9,14 +9,14 @@ class Livro:
     def emprestar(self, pessoa):
         if self.disponivel == False:
             raise Exception("Livro já emprestado.")
-        pessoa.livros_emprestados.append(self.titulo)
+        pessoa.livros_emprestados.append(self)
         self.disponivel = False
         self.emprestado_para = pessoa
 
     def devolver(self, pessoa):
         if self.disponivel:
             raise Exception("Livro não está emprestado.")
-        pessoa.livros_emprestados.remove(self.titulo)
+        pessoa.livros_emprestados.remove(self)
         self.disponivel = True
         self.emprestado_para = None
 

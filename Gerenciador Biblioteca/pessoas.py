@@ -21,7 +21,10 @@ class Leitor(Pessoa):
 
 
     def __str__(self):
-        return f"Leitor: {self.nome}, ID: {self.id}, Livros Emprestados: {self.livros_emprestados}"
+        livros=[]
+        for l in self.livros_emprestados:
+            livros.append(l.titulo)
+        return f"Leitor: {self.nome}, ID: {self.id}, Livros Emprestados: {livros}"
 
 class Bibliotecario(Pessoa):
     def __init__(self, nome, id):
