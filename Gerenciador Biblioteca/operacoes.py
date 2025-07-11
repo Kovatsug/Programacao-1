@@ -107,7 +107,7 @@ class Operacoes:
 
     def cadastrar_leitor(pessoas):
         nome = input("Nome do leitor: ")
-        id = f"00{len(pessoas)}"
+        id = f"{len(pessoas):03d}"
         leitor = Leitor(nome, id)
         pessoas.append(leitor)
         print("Leitor cadastrado com sucesso!")
@@ -115,6 +115,6 @@ class Operacoes:
     def listar_leitores(pessoas):
         if not pessoas:
             print("Nenhum leitor cadastrado.")
-        for p in pessoas:
+        for p in pessoas[1:]:  # Ignorando o bibliotecário root
             print(p)
             print("\n-----------------\n")

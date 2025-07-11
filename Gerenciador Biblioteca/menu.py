@@ -7,7 +7,10 @@ class MenuLeitor:
 
 
     def exibir_menu(self, biblioteca, pessoas):
-
+        for p in pessoas:
+            if p.id == self.id_leitor:
+                print(f"\nBem-Vindo, {p.nome}!")
+                break
         while True:
             print("")
             for opcao in self.opcoes:
@@ -26,11 +29,11 @@ class MenuLeitor:
                 print("Opção inválida.")
 
 class MenuADM:
-    def __init__(self, id_adm):
-        self.id_adm = id_adm
+    def __init__(self):
         self.opcoes = ["1. Cadastrar livro", "2. Listar livros", "3. Emprestar", "4. Devolver","5. Excluir livro", "6. Cadastrar Leitor", "7. Listar Leitores", "8. Sair"]
 
     def exibir_menu(self, biblioteca, pessoas):
+
         while True:
             print("")
             for opcao in self.opcoes:

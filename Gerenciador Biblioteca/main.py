@@ -16,7 +16,7 @@ def main():
             login = input("Digite o ID do administrador: ")
             for p in pessoas:
                 if p.id == login and p.admin:
-                    menu_adm = MenuADM(p.id)
+                    menu_adm = MenuADM()
                     menu_adm.exibir_menu(biblioteca, pessoas)
                     break
             else:
