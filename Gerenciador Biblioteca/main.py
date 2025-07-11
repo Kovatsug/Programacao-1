@@ -1,5 +1,4 @@
 from pessoas import Leitor, Bibliotecario
-from operacoes import Operacoes
 from menu import MenuADM, MenuLeitor
 
 def main():
