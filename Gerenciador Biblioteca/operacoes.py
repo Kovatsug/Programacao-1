@@ -86,7 +86,7 @@ class Operacoes_Administrador(Operacoes):
                 if l.titulo == titulo:
                     livro = l
                     break
-            livro.devolver()
+            livro.devolver(pessoa)
             print("Livro devolvido com sucesso!")
         except Exception as e:
             print(f"Erro: {e}")
