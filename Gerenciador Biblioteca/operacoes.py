@@ -1,7 +1,8 @@
 from livro import Livro
 from pessoas import Leitor
+from abc import ABC, abstractmethod
 
-class Operacoes:
+class Operacoes(ABC):
     
     def listar_livros(biblioteca):
         if biblioteca == []:
@@ -9,7 +10,18 @@ class Operacoes:
         for livro in biblioteca:
             print(livro)
 
-    def L_emprestar_livro(biblioteca, pessoas, id_leitor):
+    @abstractmethod
+    def emprestar_livro(biblioteca, pessoas):
+        pass
+
+    @abstractmethod
+    def devolver_livro(biblioteca, pessoas):
+        pass
+
+class Operacoes_Leitor(Operacoes):
+
+
+    def emprestar_livro(biblioteca, pessoas, id_leitor):
         try:
             titulo = input("Titulo do livro: ")
             for l in biblioteca:
@@ -25,7 +37,7 @@ class Operacoes:
         except Exception as e:
             print(f"Erro: {e}")
     
-    def L_devolver_livro(biblioteca, pessoas, id_leitor):
+    def devolver_livro(biblioteca, pessoas, id_leitor):
         try:
             titulo = input("Titulo do livro: ")
             for p in pessoas:
@@ -42,7 +54,7 @@ class Operacoes:
             print(f"Erro: {e}")
 
 
-    #------------------------------Operações Administrativas--------------------------------------
+class Operacoes_Administrador(Operacoes):
 
     def emprestar_livro(biblioteca, pessoas):
         try:

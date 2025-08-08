@@ -1,4 +1,4 @@
-from operacoes import Operacoes
+from operacoes import Operacoes_Administrador, Operacoes_Leitor, Operacoes
 
 class MenuLeitor:
     def __init__(self, id_leitor):
@@ -18,11 +18,11 @@ class MenuLeitor:
             opcao = input("Escolha: ")
 
             if opcao == "1":
-                Operacoes.listar_livros(biblioteca)
+                Operacoes_Leitor.listar_livros(biblioteca)
             elif opcao == "2":
-                Operacoes.L_emprestar_livro(biblioteca, pessoas, self.id_leitor)
+                Operacoes_Leitor.emprestar_livro(biblioteca, pessoas, self.id_leitor)
             elif opcao == "3":
-                Operacoes.L_devolver_livro(biblioteca, pessoas, self.id_leitor)
+                Operacoes_Leitor.devolver_livro(biblioteca, pessoas, self.id_leitor)
             elif opcao == "4":
                 break
             else:
@@ -41,19 +41,19 @@ class MenuADM:
             opcao = input("Escolha: ")
 
             if opcao == "1":
-                Operacoes.cadastrar_livro(biblioteca)
+                Operacoes_Administrador.cadastrar_livro(biblioteca)
             elif opcao == "2":
-                Operacoes.listar_livros(biblioteca)
+                Operacoes_Administrador.listar_livros(biblioteca)
             elif opcao == "3":
-                Operacoes.emprestar_livro(biblioteca, pessoas)
+                Operacoes_Administrador.emprestar_livro(biblioteca, pessoas)
             elif opcao == "4":
-                Operacoes.devolver_livro(biblioteca, pessoas)
+                Operacoes_Administrador.devolver_livro(biblioteca, pessoas)
             elif opcao == "5":
-                Operacoes.excluir_livro(biblioteca)
+                Operacoes_Administrador.excluir_livro(biblioteca)
             elif opcao == "6":
-                Operacoes.cadastrar_leitor(pessoas)
+                Operacoes_Administrador.cadastrar_leitor(pessoas)
             elif opcao == "7":
-                Operacoes.listar_leitores(pessoas)
+                Operacoes_Administrador.listar_leitores(pessoas)
             elif opcao == "8":
                 break
             else:
