@@ -1,0 +1,4 @@
+id,nome,admin,livros_emprestados
+0,root,True,[]
+1,Gustavo,False,[]
+2,Johnny,False,[]
