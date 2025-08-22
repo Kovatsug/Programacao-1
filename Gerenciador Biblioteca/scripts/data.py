@@ -1,4 +1,4 @@
-import pandas as pd
+import pandas as pd #
 import ast
 from livro import Livro
 from pessoas import Leitor
@@ -9,18 +9,18 @@ def carregar_dados():
 
     # Recriando objetos Leitor
     pessoas = [Leitor(
-        row.nome,
-        str(row.id),
+        str(row.nome),
+        f"{row.id:03d}",
         (row.admin),
         ast.literal_eval(row.livros_emprestados)
     ) for row in df_pessoas.itertuples()]
 
     # Recriando objetos Livro
     livros = [Livro(
-        row.titulo,
-        row.autor,
+        str(row.titulo),
+        str(row.autor),
         (row.disponivel),
-        row.emprestado_para
+        str(row.emprestado_para)
     ) for row in df_livros.itertuples()]
 
     return livros, pessoas

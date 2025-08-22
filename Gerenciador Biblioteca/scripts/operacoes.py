@@ -83,7 +83,7 @@ class Operacoes_Administrador(Operacoes):
                     break
             titulo = input("Titulo do livro: ")
             for l in livros:
-                if l.titulo == titulo and l.emprestado_para == pessoa.nome:
+                if str(l.titulo) == titulo and l.emprestado_para == pessoa.nome:
                     livro = l
                     break
             livro.devolver(pessoa)
